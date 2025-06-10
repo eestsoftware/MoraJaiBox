@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="title">the eestrecord</title>
+<title id="title">Mora Jai Box</title>
 <meta name="description" content="Mora Jai Box (from blue prince) Editor.">
 <meta name="author" content="Eest Software">
 <link rel="image_src" href="/theestrecord.png"/>
@@ -17,16 +17,21 @@ body {
   color: #FDFCFC;
 }
 
-.center {
- margin:auto;
- justify-content: center;
- display: flex;
-}
 
 .tilebutton{
  width:176px;
  height:176px;
  position:relative
+}
+
+.cornercircle{
+ width:195px;
+ height:195px;
+ position:relative;
+}
+
+.noHover{
+    pointer-events: none;
 }
 
 
@@ -51,13 +56,15 @@ body {
 .gray{filter: grayscale(100%)}
 .gray:hover {filter: grayscale(100%) brightness(90%)}
 
+.blankColor{filter: none}
+.blankColor:hover {filter: brightness(70%)}
     </style> 
    </head>
 
 
 <body>
 
-<div id="box" style="position:absolute;display: flex;left:32.5%" class="center">
+<div id="box" style="position:absolute;margin:auto;display:flex;overflow-x:hidden;width:1024px;height:1024px;top:0;bottom:0;left:0;right:0;">
 <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
 
 
@@ -73,6 +80,16 @@ body {
 <input type ="image" class="tilebutton pink" id="tile2;1" style="top:635px;right:1831px" onClick="tilePress(2, 1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
 <input type ="image" class="tilebutton blue" id="tile2;2" style="top:635px;right:1804px;transform: scaleX(-1) rotate(-90deg)" onClick="tilePress(2, 2)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
 
+<img id="corner2" class="cornercircle white noHover" style="top:767px;right:2542px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+<img id="corner3" class="cornercircle white noHover" style="top:767px;right:2042px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+<img id="corner0" class="cornercircle white noHover" style="top:62px;right:2930px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+<img id="corner1" class="cornercircle white noHover" style="top:62px;right:2430px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+
+
+<input type ="image"id="cornerbutton0" class="cornercircle white" onClick="cornerButton(0)" style="top:58px;right:3318px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image"id="cornerbutton1" class="cornercircle white" onClick="cornerButton(1)" style="top:58px;right:2820px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image"id="cornerbutton2" class="cornercircle white" onClick="cornerButton(2)" style="top:763px;right:3712px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image"id="cornerbutton3" class="cornercircle white" onClick="cornerButton(3)" style="top:763px;right:3215px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
 </div>
 
 <script>
@@ -90,10 +107,14 @@ const Tiles = Object.freeze({
 
 });
 
-var grid = [[Tiles.BLACK, Tiles.BLACK, Tiles.WHITE], [Tiles.VIOLET, Tiles.RED, Tiles.WHITE], [Tiles.PINK, Tiles.BLUE, Tiles.GRAY]]
+var grid = [[Tiles.BLACK, Tiles.BLACK, Tiles.WHITE], [Tiles.VIOLET, Tiles.RED, Tiles.WHITE], [Tiles.PINK, Tiles.BLUE, Tiles.GRAY]];
+var startingGrid = JSON.parse(JSON.stringify(grid));
+var colorsNeeded = [8, 8, 8, 8];
+var onColors = [false, false, false, false];
+var solved = false;
 
-function tilePress(y, x) {
-  var tileColor = grid[y][x];
+function tilePress(y, x, tileColor = grid[y][x]) {
+  if (solved) {return;}
   switch(tileColor) {
     case 0: break;
     case 1:
@@ -215,7 +236,7 @@ function tilePress(y, x) {
         break;
       case 9:
          if (grid[1][1] == Tiles.BLUE) {return;}
-         tilePress(1, 1);
+         tilePress(y, x, grid[1][1]);
          return;
   }
   renderBox();
@@ -250,8 +271,25 @@ function rotateTile(x, y, nextTile, adjacentTiles) {
     return [adjacentTiles, nextTile];
 }
 
+function cornerButton(id) {
+ if (solved) {return;}
+ var cornerTile = grid[id < 2 ? 0 : 2][id % 2 == 0 ? 0 : 2]
+ if (cornerTile == colorsNeeded[id]) {
+   var colorNames = Object.keys(Tiles);
+   onColors[id] = true;
+   solved = (onColors[0] && onColors[1] && onColors[2] && onColors[3]);
+   document.getElementById("cornerbutton" + id).className = "cornercircle " + colorNames[colorsNeeded[id]].toLowerCase()
+   document.getElementById("cornerbutton" + id).src = "https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajai" + colorNames[colorsNeeded[id]].toLowerCase() +  "_on.png"
+   return;
+ }
+ grid = JSON.parse(JSON.stringify(startingGrid));
+ renderBox();
+ setColors();
+}
+
 
 function renderBox() {
+  setColors();
   var colorNames = Object.keys(Tiles);
   for (var y = 0; y < grid.length; y++) {
     for (var x = 0; x < grid[y].length; x++) {
@@ -261,6 +299,17 @@ function renderBox() {
   }
 }
 
+function setColors() {
+ var colorNames = Object.keys(Tiles);
+ onColors = [false, false, false, false];
+ for (let i = 0; i < colorsNeeded.length; i++) {
+   document.getElementById("corner" + i).className = "cornercircle " + colorNames[colorsNeeded[i]].toLowerCase() + " noHover"
+   document.getElementById("cornerbutton" + i).className = "cornercircle blankColor"
+   document.getElementById("cornerbutton" + i).src = "https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajai" + colorNames[colorsNeeded[i]].toLowerCase() +  "_off.png"
+ } 
+}
+
+setColors();
 renderBox();
 </script>
 
