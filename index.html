@@ -1,1 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="title">the eestrecord</title>
+<meta name="description" content="Mora Jai Box (from blue prince) Editor.">
+<meta name="author" content="Eest Software">
+<link rel="image_src" href="/theestrecord.png"/>
+<meta name="keywords" content="HTML, CSS, JavaScript, Eest, Software, Mora Jai Box, Mora Jai, Blue Prince, Bpp, Silenceman, Say what?">
+<link rel="shortcut icon" href="theestrecord.ico" type="image/x-icon"> 
 
+<style>
+
+body {
+  background-color: #272727;
+  color: #FDFCFC;
+}
+
+.center {
+ margin:auto;
+ justify-content: center;
+ display: flex;
+}
+
+.tilebutton{
+ width:176px;
+ height:176px;
+ position:relative
+}
+
+
+.red {filter: hue-rotate(240deg) brightness(75%) saturate(170%)}
+.red:hover {filter: hue-rotate(240deg) brightness(55%) saturate(170%)}
+.green{filter: saturate(170%)}
+.green:hover {filter: brightness(85%) saturate(170%)}
+.black{filter: grayscale(100%) brightness(40%) saturate(170%)}
+.black:hover {filter: grayscale(100%) brightness(30%) saturate(170%)}
+.violet{filter: hue-rotate(160deg) brightness(60%) saturate(200%)}
+.violet:hover {filter: hue-rotate(160deg) brightness(45%) saturate(200%)}
+.pink{filter: hue-rotate(180deg)}
+.pink:hover {filter: hue-rotate(180deg) brightness(85%)}
+.yellow{filter: hue-rotate(300deg) brightness(115%) saturate(200%)}
+.yellow:hover {filter: hue-rotate(300deg) brightness(100%) saturate(200%)}
+.orange{filter: hue-rotate(280deg) brightness(115%) saturate(150%)}
+.orange:hover {filter: hue-rotate(280deg) brightness(100%) saturate(150%)}
+.blue{filter: hue-rotate(60deg) brightness(100%) saturate(200%)}
+.blue:hover {filter: hue-rotate(60deg) brightness(80%) saturate(200%)}
+.white{filter: grayscale(100%) brightness(170%)}
+.white:hover {filter: grayscale(100%) brightness(150%)}
+.gray{filter: grayscale(100%)}
+.gray:hover {filter: grayscale(100%) brightness(90%)}
+
+    </style> 
+   </head>
+
+
+<body>
+
+<div id="box" style="position:absolute;display: flex" class="center">
+<img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
+
+
+<input type ="image" class="tilebutton green" id="tile0;0" style="top:214px;right:804px"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+<input type ="image" class="tilebutton red" id="tile0;1" style="top:214px;right:776px"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton black" id="tile0;2" style="top:214px;right:749px;transform: scaleX(-1)"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+<br>
+<input type ="image" class="tilebutton white" id="tile1;0" style="top:425px;right:1331px"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton violet" id="tile1;1" style="top:425px;right:1303px"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton yellow" id="tile0;2" style="top:425px;right:1276px;"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<br>
+<input type ="image" class="tilebutton orange" id="tile2;0" style="top:635px;right:1858px;transform: rotate(-90deg)"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+<input type ="image" class="tilebutton pink" id="tile2;1" style="top:635px;right:1831px"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton blue" id="tile2;2" style="top:635px;right:1804px;transform: scaleX(-1) rotate(-90deg)"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+
+</div>
+
+
+</body>
+</html>
