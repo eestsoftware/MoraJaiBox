@@ -88,8 +88,16 @@ hr {
 <input type ="image" class="tilebutton white" style="position:relative;bottom:15px;transform: scale(0.75);color:#000000" onClick="showMenu('help')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:134px">Help</h1></input>
 
 </div>
+
+
+<div id="solved" class="blue" style="position:relative;width:100%;height:80px;background-color:#00FF25;bottom:45px;right:5px;color:#000000;display:none">
+<h1 style="font-size:64px;"> Big fat box Solved !!!</h1>
+
+<input type ="image" class="tilebutton black" style="bottom:165px;left:670px;position:relative;background-color:#121212;transform: scale(0.45)" onClick="cornerButton(-1)" onClick="cornerButton(-1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajairetry.png"></input>
+</div>
+
 <br><br>
-<div id="box" style="position:fixed;overflow-x:hidden;width:1024px;height:1024px;display:flex;top:150px" class="center">
+<div id="box" style="position:fixed;overflow-x:hidden;width:1024px;height:1024px;display:flex;top:200px" class="center">
 <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
 
 
@@ -116,6 +124,9 @@ hr {
 <input type ="image"id="cornerbutton2" class="cornercircle white" onClick="cornerButton(2)" style="top:768px;right:3712px;transform: scale(0.9) rotate(45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
 <input type ="image"id="cornerbutton3" class="cornercircle white" onClick="cornerButton(3)" style="top:768px;right:3210px;transform: scale(0.9) rotate(-45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
 </div>
+
+
+
 
 <div id="helpmenu" class = "center" style="height:1200px;width:800px;background-color: #121212;display:none">
 <h1 style="font-size:48px">Warning!! This will contain spoilers for Blue Prince</h1><br><br>
@@ -209,9 +220,9 @@ const Tiles = Object.freeze({
 
 });
 
-var grid = [[Tiles.BLACK, Tiles.BLACK, Tiles.WHITE], [Tiles.VIOLET, Tiles.RED, Tiles.GREEN], [Tiles.PINK, Tiles.BLUE, Tiles.GRAY]];
+var grid = [[Tiles.WHITE, Tiles.GRAY, Tiles.WHITE], [Tiles.WHITE, Tiles.GRAY, Tiles.GRAY], [Tiles.GRAY, Tiles.GRAY, Tiles.WHITE]];
 var startingGrid = JSON.parse(JSON.stringify(grid));
-var colorsNeeded = [5, 6, 7, 9];
+var colorsNeeded = [1, 1, 1, 1];
 var onColors = [false, false, false, false];
 var solved = false;
 
@@ -375,14 +386,21 @@ function rotateTile(x, y, nextTile, adjacentTiles) {
 }
 
 function cornerButton(id) {
+ if (id == -1) {
+   solved = false;
+   document.getElementById("solved").style.display = "none";
+ }
  if (solved) {return;}
  var cornerTile = grid[id < 2 ? 0 : 2][id % 2 == 0 ? 0 : 2]
- if (cornerTile == colorsNeeded[id]) {
+ if (cornerTile == colorsNeeded[id] && id >= 0) {
    var colorNames = Object.keys(Tiles);
    onColors[id] = true;
    solved = (onColors[0] && onColors[1] && onColors[2] && onColors[3]);
    document.getElementById("cornerbutton" + id).className = "cornercircle " + colorNames[colorsNeeded[id]].toLowerCase()
    document.getElementById("cornerbutton" + id).src = "https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajai" + colorNames[colorsNeeded[id]].toLowerCase() +  "_on.png"
+   if (!solved) {return;}
+   document.getElementById("solved").style.display = "block";
+   document.getElementById("solved").className = colorNames[colorsNeeded[0]].toLowerCase();
    return;
  }
  grid = JSON.parse(JSON.stringify(startingGrid));
