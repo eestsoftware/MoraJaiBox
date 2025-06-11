@@ -29,7 +29,7 @@ hr {
 }
 
 .center {
-  position:absolute;
+  position:relative;
   margin:auto;
   overflow-x:hidden;
   top:0;
@@ -83,21 +83,24 @@ hr {
 
 
 <body>
-<div id="menubar" style="width:100%;height:150px;background-color:#1B1D27;display:flex;overflow:hidden">
+<div id="menubar" style="width:100%;height:150px;background-color:#1B1D27;display:flex;overflow:hidden;text-align:center;position:fixed;z-index:5;top:0;left:0">
 
-<input type ="image" class="tilebutton white" style="position:relative;bottom:15px;transform: scale(0.75);color:#000000" onClick="showMenu('help')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:134px">Help</h1></input>
+<input type ="image" class="tilebutton white" style="display:inline-block;bottom:15px;transform: scale(0.75);color:#000000" onClick="showMenu('help')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:134px">Help</h1></input>
+
+<input type ="image" class="tilebutton blue" style="display:inline-block;bottom:15px;right:105px;transform: scale(0.75);color:#000000" onClick="showMenu('edit')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:239px">Edit</h1></input>
 
 </div>
+<br><br><br><br><br><br><br><br><br><br>
 
 
-<div id="solved" class="blue" style="position:relative;width:100%;height:80px;background-color:#00FF25;bottom:45px;right:5px;color:#000000;display:none">
+<div id="solved" class="blue" style="position:relative;width:100%;height:80px;top:0;left:0;background-color:#00FF25;bottom:45px;right:5px;color:#000000;display:none;z-index:2">
 <h1 style="font-size:64px;"> Big fat box Solved !!!</h1>
 
 <input type ="image" class="tilebutton black" style="bottom:165px;left:670px;position:relative;background-color:#121212;transform: scale(0.45)" onClick="cornerButton(-1)" onClick="cornerButton(-1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajairetry.png"></input>
 </div>
 
 <br><br>
-<div id="box" style="position:fixed;overflow-x:hidden;width:1024px;height:1024px;display:flex;top:200px" class="center">
+<div id="box" style="overflow-x:hidden;width:1024px;height:1024px;display:flex;left:-250px" class="center">
 <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
 
 
@@ -126,9 +129,42 @@ hr {
 </div>
 
 
+<div id="editmenu" style="position:fixed;margin:auto;overflow-y:scroll;overflow-x:hidden;top:0;bottom:0;left:70%;right:0;height:100%;width:550px;background-color:#344D7E;display:block">
+<br><br><br><br><br><br><br>
+<h1 style="font-size:48px" id="editorstatus"> Currently: Testing </h1>
 
+<div id="buttonrow" style="display:flex;margin:auto;top:0;left:162px;position:relative;right:0;bottom:0;" class="center">
+<input type="image" style="height:98px;width:98px;background-color:#21314E;margin:5px;border:3px solid #121212" onClick="editorSelect('play')" class="blankColor" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiplay.png"></input>
+<input type="image" style="height:98px;width:98px;background-color:#21314E;margin:5px;border:3px solid #121212" onClick="editorSelect('edit')" class="blankColor" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiedit.png"></input>
+</div>
+<br><br><br>
+<h1>Selected</h1>
+<img type ="image" class="tilebutton gray noHover" id="editColor" style="border:7px solid #121212" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<br><br>
 
-<div id="helpmenu" class = "center" style="height:1200px;width:800px;background-color: #121212;display:none">
+<div id="colorrow" style="display:flex;margin:auto;top:0;left:83px;position:relative;right:0;bottom:0;" class="center">
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton gray"onClick="editorSelect(0)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton white"onClick="editorSelect(1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+</div><br>
+<div id="colorrow" style="display:flex;margin:auto;top:0;left:83px;position:relative;right:0;bottom:0;" class="center">
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton green"onClick="editorSelect(2)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton black"onClick="editorSelect(3)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+</div><br>
+<div id="colorrow" style="display:flex;margin:auto;top:0;left:83px;position:relative;right:0;bottom:0;" class="center">
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton yellow"onClick="editorSelect(5)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton violet"onClick="editorSelect(4)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+</div><br>
+<div id="colorrow" style="display:flex;margin:auto;top:0;left:83px;position:relative;right:0;bottom:0;" class="center">
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton pink"onClick="editorSelect(6)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton orange"onClick="editorSelect(7)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+</div><br>
+<div id="colorrow" style="display:flex;margin:auto;top:0;left:83px;position:relative;right:0;bottom:0;" class="center">
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton red"onClick="editorSelect(8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton blue"onClick="editorSelect(9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+</div><br>
+</div>
+
+<div id="helpmenu" class = "center" style="height:1200px;width:800px;background-color: #121212;display:none;position:fixed">
 <h1 style="font-size:48px">Warning!! This will contain spoilers for Blue Prince</h1><br><br>
 <img  class="center" style="height:960px;position:relative;margin:auto" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaihelp.png"></img><br>
 <hr>
@@ -226,7 +262,18 @@ var colorsNeeded = [1, 1, 1, 1];
 var onColors = [false, false, false, false];
 var solved = false;
 
+var editorState = "play";
+var editorColor = 0;
+
+
 function tilePress(y, x, tileColor = grid[y][x]) {
+  if (editorState == "edit") {
+     startingGrid[y][x] = editorColor;
+     cornerButton(-1);
+     return;
+
+  }
+  
   if (solved) {return;}
   var selfColor = grid[y][x];//seperate from tileColor for blue tiles to work
   switch(tileColor) {
@@ -330,11 +377,11 @@ function tilePress(y, x, tileColor = grid[y][x]) {
           popularity[neighbouringTiles[i]]++;
         }
 
-        var maximum = [0, 7]
+        var maximum = [0, selfColor]
         for (let i = 0; i < Object.keys(popularity).length; i++) {
          var tile = Object.keys(popularity)[i];
          if (popularity[tile] < maximum[0]) {continue;}
-         else if (popularity[tile] == maximum[0]) {maximum[1] = 7;continue;}
+         else if (popularity[tile] == maximum[0]) {maximum[1] = selfColor;continue;}
           
          maximum[0] = popularity[tile];
          maximum[1] = parseInt(tile);
@@ -389,6 +436,10 @@ function cornerButton(id) {
  if (id == -1) {
    solved = false;
    document.getElementById("solved").style.display = "none";
+ } else if (id >= 0 && editorState == "edit") {
+   colorsNeeded[id] = editorColor;
+   cornerButton(-1);
+   return;
  }
  if (solved) {return;}
  var cornerTile = grid[id < 2 ? 0 : 2][id % 2 == 0 ? 0 : 2]
@@ -434,11 +485,26 @@ function setColors() {
 setColors();
 renderBox();
 
-function showMenu(menu) {
-  var allMenus = ["help"];
-  for (var i = 0; i < allMenus.length; i++) {
-    document.getElementById(allMenus[i] + "menu").style.display = (allMenus[i] == menu && document.getElementById(allMenus[i] + "menu").style.display != "block") ? "block" : "none";
+function editorSelect(action) {
+  if (action == "play" || action == "edit") {
+     cornerButton(-1);
+     editorState = action
+     document.getElementById("editorstatus").innerHTML = "Currently: " + ((editorState == "play") ? "Testing" : "Editing");
+     return;
   }
+  var colorNames = Object.keys(Tiles);
+  editorColor = action;
+  document.getElementById("editColor").className = "tilebutton " + colorNames[action].toLowerCase() + " noHover";
+}
+
+function showMenu(menu) {
+  var allMenus = ["help", "edit"];
+  for (var i = 0; i < allMenus.length; i++) {
+    if (allMenus[i] != menu && menu != "help" && allMenus[i] != "help") {  document.getElementById(allMenus[i] + "menu").style.display != "none"; }
+    if (allMenus[i] != menu) {continue;}
+    document.getElementById(allMenus[i] + "menu").style.display = (document.getElementById(allMenus[i] + "menu").style.display != "block" || menu != allMenus[i]) ? "block" : "none";
+  }
+  document.getElementById("box").style.left = (document.getElementById("editmenu").style.display == "block") ? "-250px" : "0px"
 }
 </script>
 
