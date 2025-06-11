@@ -13,10 +13,30 @@
 <style>
 
 body {
+  font-family: Times New Roman;
   background-color: #272727;
   color: #FDFCFC;
 }
 
+div {
+ text-align:center;
+}
+
+hr {
+ width:90%;
+ text-align:left;
+ margin-left:0"
+}
+
+.center {
+  position:absolute;
+  margin:auto;
+  overflow-x:hidden;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
 
 .tilebutton{
  width:176px;
@@ -63,8 +83,13 @@ body {
 
 
 <body>
+<div id="menubar" style="width:100%;height:150px;background-color:#1B1D27;display:flex;overflow:hidden">
 
-<div id="box" style="position:absolute;margin:auto;display:flex;overflow-x:hidden;width:1024px;height:1024px;top:0;bottom:0;left:0;right:0;">
+<input type ="image" class="tilebutton white" style="position:relative;bottom:15px;transform: scale(0.75);color:#000000" onClick="showMenu('help')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:134px">Help</h1></input>
+
+</div>
+<br><br>
+<div id="box" style="position:fixed;overflow-x:hidden;width:1024px;height:1024px;display:flex;top:150px" class="center">
 <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
 
 
@@ -86,10 +111,87 @@ body {
 <img id="corner1" class="cornercircle white noHover" style="top:62px;right:2430px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
 
 
-<input type ="image"id="cornerbutton0" class="cornercircle white" onClick="cornerButton(0)" style="top:58px;right:3318px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
-<input type ="image"id="cornerbutton1" class="cornercircle white" onClick="cornerButton(1)" style="top:58px;right:2820px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
-<input type ="image"id="cornerbutton2" class="cornercircle white" onClick="cornerButton(2)" style="top:763px;right:3712px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
-<input type ="image"id="cornerbutton3" class="cornercircle white" onClick="cornerButton(3)" style="top:763px;right:3215px;transform: scale(0.9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image"id="cornerbutton0" class="cornercircle white" onClick="cornerButton(0)" style="top:58px;right:3323px;transform: scale(0.9) rotate(135deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image"id="cornerbutton1" class="cornercircle white" onClick="cornerButton(1)" style="top:58px;right:2820px;transform: scale(0.9) rotate(-135deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image"id="cornerbutton2" class="cornercircle white" onClick="cornerButton(2)" style="top:768px;right:3712px;transform: scale(0.9) rotate(45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image"id="cornerbutton3" class="cornercircle white" onClick="cornerButton(3)" style="top:768px;right:3210px;transform: scale(0.9) rotate(-45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+</div>
+
+<div id="helpmenu" class = "center" style="height:1200px;width:800px;background-color: #121212;display:none">
+<h1 style="font-size:48px">Warning!! This will contain spoilers for Blue Prince</h1><br><br>
+<img  class="center" style="height:960px;position:relative;margin:auto" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaihelp.png"></img><br>
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton gray noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Gray Tiles</h2>
+<p style="position:relative;bottom:0px;right:768px;top:50px;font-size:20px;min-width:600px;max-height:100px;">Gray Tiles have no effect when pressed.</p>
+</div>
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton white noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">White Tiles</h2>
+<p style="position:relative;bottom:0px;right:780px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, turns itself Gray, all adjacent Gray tiles White, and adjacent White tiles Gray. </p>
+</div>
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton green noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Green Tiles</h2>
+<p style="position:relative;bottom:0px;right:780px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, this tile will swap places with the tile in the opposite position on the grid. Does nothing when in the middle position.</p>
+</div>
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton black noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Black Tiles</h2>
+<p style="position:relative;bottom:0px;right:780px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, this tile will shift the entire row to the right, wrapping around the edge (The right-most tile becomes left).</p>
+</div>
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton yellow noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Yellow Tiles</h2>
+<p style="position:relative;bottom:0px;right:786px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, this tile will move north (up), swapping place with the tile currently above it. Does nothing if at the top.</p>
+</div>
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton violet noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Violet Tiles</h2>
+<p style="position:relative;bottom:0px;right:780px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, this tile will move south (down), swapping place with the tile currently below it. Does nothing if at the bottom.</p>
+</div>
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton pink noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Pink Tiles</h2>
+<p style="position:relative;bottom:0px;right:760px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, all adjacent (including diagonally adjacent) tiles will rotate clockwise around the tile, wrapping around at the edges.</p>
+</div>
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton orange noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Orange Tiles</h2>
+<p style="position:relative;bottom:0px;right:800px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, this tile's color will change to the one shared by the majority of adjacent tiles.</p>
+</div>
+
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton red noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Red Tiles</h2>
+<p style="position:relative;bottom:0px;right:760px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, all White tiles on the grid become Black, and all Black Tiles will become Red.</p>
+</div>
+
+
+<hr>
+<div style="display:flex;text-align:left">
+<img class="tilebutton blue noHover" style="margin-right:auto;transform: scale(0.8)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></img>
+<h2 style="margin-right:80%;font-size:32px;white-space: nowrap;height:50%">Blue Tiles</h2>
+<p style="position:relative;bottom:0px;right:760px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, this tile will mimic the effect of the tile in the center of the grid. Does nothing if the center tile is Blue.</p>
+</div>
+
 </div>
 
 <script>
@@ -107,20 +209,21 @@ const Tiles = Object.freeze({
 
 });
 
-var grid = [[Tiles.BLACK, Tiles.BLACK, Tiles.WHITE], [Tiles.VIOLET, Tiles.RED, Tiles.WHITE], [Tiles.PINK, Tiles.BLUE, Tiles.GRAY]];
+var grid = [[Tiles.BLACK, Tiles.BLACK, Tiles.WHITE], [Tiles.VIOLET, Tiles.RED, Tiles.GREEN], [Tiles.PINK, Tiles.BLUE, Tiles.GRAY]];
 var startingGrid = JSON.parse(JSON.stringify(grid));
-var colorsNeeded = [8, 8, 8, 8];
+var colorsNeeded = [5, 6, 7, 9];
 var onColors = [false, false, false, false];
 var solved = false;
 
 function tilePress(y, x, tileColor = grid[y][x]) {
   if (solved) {return;}
+  var selfColor = grid[y][x];//seperate from tileColor for blue tiles to work
   switch(tileColor) {
     case 0: break;
     case 1:
-        grid[y][x] = Tiles.GRAY;
         let allowedColors = [Tiles.GRAY, Tiles.WHITE];
         let convertTo = {0: 1, 1: 0};
+        convertTile(y, x, allowedColors, convertTo);
         convertTile(y, x - 1, allowedColors, convertTo);
         convertTile(y, x + 1, allowedColors, convertTo);
         convertTile(y - 1, x, allowedColors, convertTo);
@@ -133,7 +236,7 @@ function tilePress(y, x, tileColor = grid[y][x]) {
         if (y == 2) {oppositeY = 0;} else if (y == 0) {oppositeY = 2;}
         var oppositeTile = grid[oppositeY][oppositeX];
         grid[y][x] = oppositeTile;
-        grid[oppositeY][oppositeX] = Tiles.GREEN;
+        grid[oppositeY][oppositeX] = selfColor;
         break;
    case 3:
         var altGrid = [grid[y][2], grid[y][0], grid[y][1]];
@@ -143,13 +246,13 @@ function tilePress(y, x, tileColor = grid[y][x]) {
         if (y >= grid.length - 1) {break;}
         var southTile = grid[y + 1][x];
         grid[y][x] = southTile;
-        grid[y + 1][x] = Tiles.VIOLET;
+        grid[y + 1][x] = selfColor;
         break;
     case 5:
         if (y <= 0) {break;}
         var northTile = grid[y - 1][x];
         grid[y][x] = northTile;
-        grid[y - 1][x] = Tiles.YELLOW;
+        grid[y - 1][x] = selfColor;
         break;
     case 6:
         let adjacentTiles = [[], [], []];//CODING THIS WAS TORTURE
@@ -309,8 +412,16 @@ function setColors() {
  } 
 }
 
+
 setColors();
 renderBox();
+
+function showMenu(menu) {
+  var allMenus = ["help"];
+  for (var i = 0; i < allMenus.length; i++) {
+    document.getElementById(allMenus[i] + "menu").style.display = (allMenus[i] == menu && document.getElementById(allMenus[i] + "menu").style.display != "block") ? "block" : "none";
+  }
+}
 </script>
 
 
