@@ -25,7 +25,7 @@ div {
 hr {
  width:90%;
  text-align:left;
- margin-left:0;
+ margin-left:0"
 }
 
 .center {
@@ -89,14 +89,20 @@ hr {
 
 <input type ="image" class="tilebutton blue" style="display:inline-block;bottom:15px;right:105px;transform: scale(0.75);color:#000000" onClick="showMenu('edit')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:239px">Edit</h1></input>
 
+<input type ="image" class="tilebutton green" style="display:inline-block;bottom:15px;right:200px;transform: scale(0.75);color:#000000" onClick="showMenu('load')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:340px">Load</h1></input>
+
+
 </div>
 <br><br><br><br><br><br><br><br><br><br>
 
 
-<div id="solved" class="blue" style="position:fixed;width:100%;height:80px;top:165px;left:0;background-color:#00FF25;bottom:45px;right:5px;color:#000000;display:block;z-index:2">
-<h1 style="position:relative;font-size:64px;bottom:40px"> Big fat box Solved !!!</h1>
+<div id="solved" class="blue" style="position:fixed;width:100%;height:80px;top:165px;left:0;background-color:#00FF25;bottom:45px;right:5px;color:#000000;display:none;z-index:2">
+<h1 style="position:relative;font-size:64px;bottom:40px" id="solvedtext"> Big fat box Solved !!!</h1>
 
-<input type ="image" class="tilebutton black" style="bottom:210px;left:670px;position:relative;background-color:#121212;transform: scale(0.475)" onClick="cornerButton(-1)" onClick="cornerButton(-1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajairetry.png"></input>
+<input type ="image" class="tilebutton gray" id="solvedretrybutton" style="bottom:-50px;left:0px;position:fixed;background-color:#121212;transform: scale(0.475)" onClick="cornerButton(-1)" onClick="cornerButton(-1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajairetry.png"></input>
+
+<input type ="image" class="tilebutton gray" id="solvedsavebutton" style="bottom:-50px;left:100px;position:fixed;background-color:#1212FF;transform: scale(0.475)" onClick="saveBox()" onClick="cornerButton(-1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaisave.png"></input>
+
 </div>
 
 <br><br>
@@ -128,8 +134,9 @@ hr {
 <input type ="image"id="cornerbutton3" class="cornercircle white" onClick="cornerButton(3)" style="top:768px;right:3210px;transform: scale(0.9) rotate(-45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
 </div>
 
+<h1 style="text-align:center;font-size:64px;left:0px;position:relative" id="boxname">Custom Box</h1>
 
-<div id="editmenu" style="position:fixed;margin:auto;overflow-y:scroll;overflow-x:hidden;top:0;bottom:0;left:70%;right:0;height:100%;width:550px;background-color:#344D7E;display:none">
+<div id="editmenu" style="position:fixed;margin:auto;overflow-y:scroll;overflow-x:hidden;top:0;bottom:0;right:0%;height:100%;width:550px;background-color:#344D7E;display:none">
 <br><br><br><br><br><br><br>
 <h1 style="font-size:48px" id="editorstatus"> Currently: Testing </h1>
 
@@ -163,6 +170,62 @@ hr {
 <input type ="image" style="margin:5px;border:4px solid #000000" class="tilebutton blue"onClick="editorSelect(9)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
 </div><br>
 </div>
+
+
+<div id="savemenu" class = "center" style="z-index:5;height:850px;top:150px;width:1200px;background-color: #121212;display:block;position:fixed;border:5px solid #FFFFFF;overflow-y:hidden;display:none">
+<div id="boxnamingmenu" style="display:flex;text-align:center">
+<h1 style="position:relative;font-size:64px;left:50px" id="saveboxname">Saving Box:</h1>
+<input type="text" id="saveboxchangename" onchange ="saveboxNameChange();" onkeypress="this.onchange()" oninput = "this.onchange()" oninput = "this.onchange();"  maxlength="25" style="position:relative;left:95px;top:55px;width:700px;height:45px;font-size:32px"></input>
+</div>
+
+<div id ="savebox" style="position:relative;overflow-x:hidden;width:1024px;height:1024px;display:flex;right:125px;bottom:250px;transform: scale(0.5)" class="noHover">
+<img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
+
+
+<input type ="image" class="tilebutton green" style="top:214px;right:804px"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+<input type ="image" class="tilebutton red"style="top:214px;right:776px" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton black" style="top:214px;right:749px;transform: scaleX(-1)"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+<br>
+<input type ="image" class="tilebutton white"  style="top:425px;right:1331px" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton violet" style="top:425px;right:1303px" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton yellow" style="top:425px;right:1276px;" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<br>
+<input type ="image" class="tilebutton orange"  style="top:635px;right:1859px;transform: rotate(-90deg)" onClick="tilePress(2, 0)"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+<input type ="image" class="tilebutton pink" style="top:635px;right:1831px" onClick="tilePress(2, 1)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"></input>
+<input type ="image" class="tilebutton blue" style="top:635px;right:1804px;transform: scaleX(-1) rotate(-90deg)" onClick="tilePress(2, 2)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"></input>
+
+<img class="cornercircle white noHover" style="top:767px;right:2542px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+<img class="cornercircle white noHover" style="top:767px;right:2042px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+<img class="cornercircle white noHover" style="top:62px;right:2930px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+<img class="cornercircle white noHover" style="top:62px;right:2430px;transform: scale(0.95)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicirclecorner.png"></img>
+
+
+<input type ="image" class="cornercircle white"style="top:58px;right:3323px;transform: scale(0.9) rotate(135deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image" class="cornercircle white" style="top:58px;right:2820px;transform: scale(0.9) rotate(-135deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image" class="cornercircle white" style="top:768px;right:3712px;transform: scale(0.9) rotate(45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+<input type ="image" class="cornercircle white" style="top:768px;right:3210px;transform: scale(0.9) rotate(-45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+</div>
+
+<p style="position:relative;font-size:64px;bottom:1050px;left:680px;max-width:400px">This box will be saved to your [Saved] menu, and can be accessed at any time</p>
+<br>
+<input type="text" id ="savecode" readonly style="position:relative;right:130px;bottom:1050px;min-width:900px;max-width:900px;height:45px;font-size:32px;background-color:#252525;color:#FFFFFF" value="whats the science"></input>
+<br>
+<button id="savecopybutton" onClick="copyCode()" style="position:relative;left:455px;bottom:1098px;width:250px;height:45px;font-size:32px;background-color:#FFFFFF;color:#000000">Copy</button>
+<br>
+<button id="finishsavebutton" onClick="finishBox()" style="position:relative;left:0px;bottom:1080px;width:750px;height:45px;font-size:32px;background-color:#FFFFFF;color:#000000">Save!</button>
+
+</div>
+
+
+
+
+<div id="loadmenu" class = "center" style="z-index:5;height:350px;top:150px;width:800px;background-color: #121212;display:none;position:fixed;border:5px solid #FFFFFF;overflow-y:hidden;">
+<h1 style="font-size:64px;" id="saveboxname">Load Box</h1>
+<p style="font-size:32px;display:none" id="loaderror">There was an error loading this box</p>
+<input type="text" id="boxloadinput" placeholder="Enter Box Code" style="width:700px;height:45px;font-size:32px"></input><br><br>
+<button id="finishsavebutton" onClick="loadBox()" style="width:550px;height:45px;font-size:32px;background-color:#FFFFFF;color:#000000">Load</button>
+</div>
+
 
 <div id="helpmenu" class = "center" style="height:1200px;width:800px;background-color: #121212;display:none;position:fixed">
 <h1 style="font-size:48px">Warning!! This will contain spoilers for Blue Prince</h1><br><br>
@@ -262,6 +325,7 @@ var colorsNeeded = [1, 1, 1, 1];
 var onColors = [false, false, false, false];
 var solved = false;
 
+var currentBoxData = ["Custom Box", ""];//Name, Code
 var editorState = "play";
 var editorColor = 0;
 
@@ -275,12 +339,13 @@ function tilePress(y, x, tileColor = grid[y][x]) {
   }
   
   if (solved) {return;}
-  var selfColor = grid[y][x];//seperate from tileColor for blue tiles to work
+  var selfColor = parseInt(grid[y][x]);//seperate from tileColor for blue tiles to work
   switch(tileColor) {
     case 0: break;
     case 1:
-        let allowedColors = [Tiles.GRAY, Tiles.WHITE];
-        let convertTo = {0: 1, 1: 0};
+        let allowedColors = [0, selfColor];
+        let convertTo = {0: selfColor, [selfColor]: 0};
+
         convertTile(y, x, allowedColors, convertTo);
         convertTile(y, x - 1, allowedColors, convertTo);
         convertTile(y, x + 1, allowedColors, convertTo);
@@ -391,7 +456,7 @@ function tilePress(y, x, tileColor = grid[y][x]) {
       case 8:
         for (let i = 0; i < grid.length; i++) {
            for (let j = 0; j < grid[i].length; j++) {
-             convertTile(j, i, [Tiles.WHITE, Tiles.BLACK], {1: 3, 3: 8});
+             convertTile(j, i, [Tiles.WHITE, Tiles.BLACK], {1: 3, 3: selfColor});
            }
         }
         break;
@@ -435,6 +500,7 @@ function rotateTile(x, y, nextTile, adjacentTiles) {
 function cornerButton(id) {
  if (id == -1) {
    solved = false;
+   document.getElementById("savemenu").style.display = "none";
    document.getElementById("solved").style.display = "none";
  } else if (id >= 0 && editorState == "edit") {
    colorsNeeded[id] = editorColor;
@@ -452,6 +518,8 @@ function cornerButton(id) {
    if (!solved) {return;}
    document.getElementById("solved").style.display = "block";
    document.getElementById("solved").className = colorNames[colorsNeeded[0]].toLowerCase();
+   document.getElementById("solvedsavebutton").style.display = (currentBoxData[0] == "Custom Box") ? "block" : "none";
+   document.getElementById("solvedtext").innerHTML = ((currentBoxData[0] == "Custom Box") ? "Box" : currentBoxData[0]) + " solved!!";
    return;
  }
  grid = JSON.parse(JSON.stringify(startingGrid));
@@ -484,27 +552,151 @@ function setColors() {
 
 setColors();
 renderBox();
+document.getElementById("boxname").innerHTML = currentBoxData[0];
 
 function editorSelect(action) {
   if (action == "play" || action == "edit") {
      cornerButton(-1);
+     if (action == "edit") {currentBoxData = ["Custom Box", ""]; }
      editorState = action
+     document.getElementById("boxname").innerHTML = currentBoxData[0] + ((editorState == "edit") ? " [EDITING]" : "");
      document.getElementById("editorstatus").innerHTML = "Currently: " + ((editorState == "play") ? "Testing" : "Editing");
      return;
   }
+  if (editorState == "play") {return;}
   var colorNames = Object.keys(Tiles);
   editorColor = action;
   document.getElementById("editColor").className = "tilebutton " + colorNames[action].toLowerCase() + " noHover";
 }
 
+function updateBoxCode() {
+  var code = "";
+  for (let i = 0; i < startingGrid.length; i++) {
+      for (let j = 0; j < startingGrid[i].length; j++) {
+        code += startingGrid[i][j];
+        if (!(i == startingGrid.length - 1 && j == startingGrid[i].length - 1)) {code += ";";}
+      }
+  }
+  code += "/";
+  for (let i = 0; i < colorsNeeded.length; i++) {
+    code += colorsNeeded[i];
+    if (i < 3) {code += ";";}
+   }
+  var name = currentBoxData[0].trim();
+  if (name == "" || name.length < 1 || name == "Custom Box") {name = "Untitled Box";}
+  currentBoxData[0] = name;  
+
+  code += ("/" + name);
+  code = btoa(code);
+  currentBoxData[1] = code;
+  document.getElementById("savecode").value = code;
+}
+
+function copyCode() {
+  navigator.clipboard.writeText(document.getElementById("savecode").value);
+  document.getElementById("savecopybutton").innerHTML = "Copied!"
+  setTimeout(() => { document.getElementById("savecopybutton").innerHTML = "Copy"; }, 500);
+}
+
+function saveBox() {
+  document.getElementById("savemenu").style.display = (document.getElementById("savemenu").style.display == "block") ? "none" : "block";
+  colorFakeBox(document.getElementById("savebox"), startingGrid, colorsNeeded);
+  updateBoxCode();
+}
+
+function finishBox() {
+  cornerButton(-1);
+  var allSavedBoxes = localStorage.getItem("savedBoxes");
+  if (allSavedBoxes == null) { allSavedBoxes = {}; }
+  else {allSavedBoxes = JSON.parse(localStorage.getItem("savedBoxes")); }
+
+  var boxName = currentBoxData[0];
+  if (Object.values(allSavedBoxes).indexOf(currentBoxData[1]) >= 0) {return;}
+  if (Object.keys(allSavedBoxes).indexOf(boxName) >= 0) { 
+    var newName = boxName;
+    var i = 1;
+    while(Object.keys(allSavedBoxes).indexOf(newName) >= 0) {
+      newName = boxName + " (" + i + ");"
+      i += 1;
+    }
+    boxName = newName;
+  }
+  currentBoxData[0] = boxName;
+  document.getElementById("boxname").innerHTML = currentBoxData[0] + ((editorState == "edit") ? " [EDITING]" : "");
+
+  allSavedBoxes[boxName] = currentBoxData[1];
+  localStorage.setItem("savedBoxes", JSON.stringify(allSavedBoxes));
+}
+
+function saveboxNameChange() {
+  currentBoxData[0] = document.getElementById("saveboxchangename").value;
+  updateBoxCode();
+}
+
+function loadBox() {
+  var input = document.getElementById("boxloadinput").value;
+  try {
+  var code = atob(input);
+  code = code.split("/");
+  var gridCode = code[0].split(";");
+  for (var i = 0; i < gridCode.length; i++) {gridCode[i] = parseInt(gridCode[i]); }
+
+  var newGrid = [[gridCode[0], gridCode[1], gridCode[2]], [gridCode[3], gridCode[4], gridCode[5]], [gridCode[6], gridCode[7], gridCode[8]]]
+  var newColors = code[1].split(";");
+  for (var i = 0; i < newColors.length; i++) {newColors[i] = parseInt(newColors[i]); }
+
+  currentBoxData = [code[2], atob(input)];
+  startingGrid = JSON.parse(JSON.stringify(newGrid));
+  colorsNeeded = newColors;
+  document.getElementById("boxname").innerHTML = currentBoxData[0];
+  } catch(error) {
+   document.getElementById("loaderror").style.display = "block";
+   return;
+  }
+  document.getElementById("loaderror").style.display = "none";
+  renderBox();
+  cornerButton(-1);
+  showMenu("");
+  solved = false;
+}
+
 function showMenu(menu) {
-  var allMenus = ["help", "edit"];
+  var allMenus = ["help", "edit", "load"];
   for (var i = 0; i < allMenus.length; i++) {
-    if (allMenus[i] != menu && menu != "help" && allMenus[i] != "help") {  document.getElementById(allMenus[i] + "menu").style.display != "none"; }
+    if ((allMenus[i] != menu) && ( (menu != "help" && allMenus[i] != "help") || (menu == "load")) ) {  document.getElementById(allMenus[i] + "menu").style.display = "none"; }
     if (allMenus[i] != menu) {continue;}
-    document.getElementById(allMenus[i] + "menu").style.display = (document.getElementById(allMenus[i] + "menu").style.display != "block" || menu != allMenus[i]) ? "block" : "none";
+    document.getElementById(allMenus[i] + "menu").style.display = (document.getElementById(allMenus[i] + "menu").style.display != "block") ? "block" : "none";
   }
   document.getElementById("box").style.left = (document.getElementById("editmenu").style.display == "block") ? "-250px" : "0px"
+  document.getElementById("boxname").style.left = (document.getElementById("editmenu").style.display == "block") ? "-250px" : "0px"
+}
+
+function colorFakeBox(box, bGrid, colors) {
+  var nodes = box.getElementsByTagName("*");
+  var colorNames = Object.keys(Tiles);
+
+  let y = 0;
+  let x = 0;
+  let i = 0;
+  for (let j = 0; j < nodes.length; j++) {
+    if(nodes[j].className == "") {continue;}
+    if (i < 9) {
+      nodes[j].className = "tilebutton " + colorNames[bGrid[y][x]].toLowerCase();
+      x += 1;
+      if (x % 3 == 0 && x > 0) {
+         y += 1;
+         x = 0;
+       }
+    } else if (i < 13) {
+      nodes[j].className = "cornercircle " + colorNames[colors[x]].toLowerCase() + " noHover";
+      x += 1;
+      if (i == 12) {x = 0;}
+    } else {
+      nodes[j].className = "cornercircle blankColor"
+      nodes[j].src = "https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajai" + colorNames[colors[x]].toLowerCase() +  "_off.png"
+    }
+    i += 1;
+  }
 }
 </script>
 
