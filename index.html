@@ -7,6 +7,7 @@
 <meta name="description" content="Mora Jai Box (from blue prince) Editor.">
 <meta name="author" content="Eest Software">
 <link rel="image_src" href="/theestrecord.png"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta name="keywords" content="HTML, CSS, JavaScript, Eest, Software, Mora Jai Box, Mora Jai, Blue Prince, Bpp, Silenceman, Say what?">
 <link rel="shortcut icon" href="theestrecord.ico" type="image/x-icon"> 
 
@@ -99,7 +100,7 @@ hr {
 
 
 </div>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 
 <div id="solved" class="blue" style="position:fixed;width:100%;height:80px;top:165px;left:0;background-color:#00FF25;bottom:45px;right:5px;color:#000000;display:none;z-index:2">
@@ -111,12 +112,19 @@ hr {
 
 </div>
 
+
+<div id="savedmenu" style="overflow-x:hidden;display:none" class="center">
+<h1 id="savetexttitle" style="font-size:64px">Saved Boxes</h1>
+
+<div id="saverow" style="display:flex;width:500px;height:95px;background-color:#21314E" class="center">
+<button style="width:250px;height:75px;background-color:#5683EA;color:#FFFFFF;margin-left:10px;margin-top:10px;margin-bottom:10px;margin-right:5px;font-size:48px;border:2px solid #FFFFFF" onClick="loadSavedMenu();">Created</button>
+<button style="width:250px;height:75px;background-color:#61C357;color:#FFFFFF;margin-right:10px;margin-top:10px;margin-bottom:10px;margin-left:5px;font-size:48px;border:2px solid #FFFFFF" onClick="loadSavedMenu('solved');">Solved</button>
+</div><br>
+<p id="savetextcategory" style="font-size:48px">Created Boxes</p>
+<p id="savetextwarn" style="font-size:32px">You don't have any saved boxes</p>
 <br><br>
 
-
-<div id="savedmenu" class="center">
-
-<div id="saveboxtemplate" style="position:relative;height:550px;width:95%;background-color:#40558B;left:20px;margin-bottom:25px;overflow:hidden;display:none">
+<div id="saveboxtemplate" style="position:relative;height:550px;width:85%;background-color:#40558B;left:20px;margin-bottom:25px;overflow:hidden;display:none">
 <div id ="saveboxfakebox" style="position:relative;overflow-x:hidden;width:1024px;height:1024px;display:flex;right:205px;bottom:235px;transform: scale(0.5)" class="noHover">
 <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
 
@@ -143,14 +151,19 @@ hr {
 <input type ="image" class="cornercircle white" style="top:58px;right:2820px;transform: scale(0.9) rotate(-135deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
 <input type ="image" class="cornercircle white" style="top:768px;right:3712px;transform: scale(0.9) rotate(45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
 <input type ="image" class="cornercircle white" style="top:768px;right:3210px;transform: scale(0.9) rotate(-45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
+
 </div>
 
 
 <h1 id="saveboxfakename" style="font-size:100px;position:relative;left:570px;bottom:1075px;max-width:1050px;text-align:left">Untitled Box</h1>
-<br>
-<input type="text" id ="saveboxfakecode" readonly style="position:relative;left:0px;bottom:1050px;width:55%;height:45px;font-size:32px;background-color:#252525;color:#FFFFFF" value="CodeCodeCodeCodeCode"></input>
+<p id="saveboxdescription" style="font-size:48px;position:relative;left:570px;bottom:1075px;max-width:1050px;text-align:left;display:none">The classic variation</p>
 
-<div id="saveboxfakeplayrow" style="display:flex;position:relative;left:72%;bottom:920px">
+
+
+<input type="text" id ="saveboxfakecode" readonly style="position:absolute;left:600px;top:250px;width:850px;height:45px;font-size:32px;background-color:#252525;color:#FFFFFF;text-align:left" value="CodeCodeCodeCodeCode"></input>
+
+
+<div id="saveboxfakeplayrow" style="display:flex;position:absolute;left:80%;bottom:0px">
 <input type="image" id="fakedeletebutton" style="height:98px;width:98px;background-color:#68352D;margin:5px;border:3px solid #121212" onClick="saveBoxSelect('delete')" class="blankColor" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitrash.png"></input>
 <input type="image" id="fakeplaybutton" style="height:98px;width:98px;background-color:#21314E;margin:5px;border:3px solid #121212" onClick="saveBoxSelect('load')" class="blankColor" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiplay.png"></input>
 </div>
@@ -159,7 +172,16 @@ hr {
 
 </div>
 
+<div id="presetsmenu" style="overflow-x:hidden;display:none" class="center">
+<h1 id="presettitle" style="font-size:64px">Box Presets</h1>
 
+
+
+</div>
+
+
+
+<br><br><br><br><br><br>
 
 <div id="box" style="overflow-x:hidden;width:1024px;height:1024px;display:flex;left:0px" class="center">
 <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
@@ -271,10 +293,6 @@ hr {
 
 </div>
 
-<div id="presetsmenu" class="center">
-
-</div>
-
 <div id="loadmenu" class = "center" style="z-index:5;height:350px;top:150px;width:800px;background-color: #121212;display:none;position:fixed;border:5px solid #FFFFFF;overflow-y:hidden;">
 <h1 style="font-size:64px;" id="saveboxname">Load Box</h1>
 <p style="font-size:32px;display:none" id="loaderror">There was an error loading this box</p>
@@ -283,7 +301,7 @@ hr {
 </div>
 
 
-<div id="helpmenu" class = "center" style="height:1200px;width:800px;background-color: #121212;display:none;position:fixed">
+<div id="helpmenu" class = "center" style="height:1200px;width:800px;background-color: #121212;display:none;position:fixed;z-index:7;top:125px">
 <h1 style="font-size:48px">Warning!! This will contain spoilers for Blue Prince</h1><br><br>
 <img  class="center" style="height:960px;position:relative;margin:auto" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaihelp.png"></img><br>
 <hr>
@@ -358,6 +376,24 @@ hr {
 <p style="position:relative;bottom:0px;right:760px;top:50px;font-size:20px;min-width:600px;max-height:100px;">When pressed, this tile will mimic the effect of the tile in the center of the grid. Does nothing if the center tile is Blue.</p>
 </div>
 
+<br><br><br>
+<hr>
+<h1 style="font-size:64px;">Editing</h1>
+<p style="font-size:28px;color:white;text-align:left">Editing is fairly simple on here!</p>
+<p style="font-size:28px;color:red">[Please note that editing a box will override it, so if you edit a box you're already playing, solving it will not save your progress!]</p>
+<ul style="font-size:28px;text-align:left">
+ <li>First, press the Blue Edit Button at the top of the screen to open the Edit Menu.</li>
+ <li>Secondly, press the Edit Button to enter edit mode, where you can select tile colors and such.</li>
+ <li>While in edit mode, pressing on a tile will change it to the selected colour, and pressing a corner tile will also change its color, pretty simple.</li>
+ <li>After solving your box, you get the option to save it! (By clicking on the Floppy Disk/Save icon).</li>
+ <li>When saving your box and naming your box you get its <b>code</b>. You can copy this code and send it to other for them to try your awesome new box!</li>
+ <li>All your saved boxes will be accessible in the [Saved] tab, where you can see their code, and play them if you want.</li>
+</ul>
+
+<br>
+<hr>
+<h1 style="font-size:64px;">Loading</h1>
+<p style="font-size:28px;color:white;text-align:left">Box codes, which are made from saving a box can be inputted to the [Load] menu, where you can play them! All solved boxes are also saved in the [Saved] tab, where you can check their codes and play them again.</p>
 </div>
 
 <script>
@@ -381,7 +417,7 @@ var colorsNeeded = [1, 1, 1, 1];
 var onColors = [false, false, false, false];
 var solved = false;
 
-var currentBoxData = ["Custom Box", ""];//Name, Code
+var currentBoxData = ["The Mora Jai Box", "MTswOzE7MTswOzA7MDswOzEvMTsxOzE7MS9UaGUgTW9yYSBKYWkgQm94"];//Name, Code
 var editorState = "play";
 var editorColor = 0;
 
@@ -395,6 +431,10 @@ function tilePress(y, x, tileColor = grid[y][x]) {
   }
   
   if (solved) {return;}
+  
+   var audio = new Audio('https://github.com/eestsoftware/MoraJaiBox/raw/refs/heads/main/audio/morajaitilepress.mp3');
+   audio.play();
+ 
   var selfColor = parseInt(grid[y][x]);//seperate from tileColor for blue tiles to work
   switch(tileColor) {
     case 0: break;
@@ -565,6 +605,12 @@ function cornerButton(id) {
  }
  if (solved) {return;}
  var cornerTile = grid[id < 2 ? 0 : 2][id % 2 == 0 ? 0 : 2]
+
+ if (id >= 0) {
+   var audio = new Audio('https://github.com/eestsoftware/MoraJaiBox/raw/refs/heads/main/audio/' + ((cornerTile == colorsNeeded[id]) ? "morajaicornerbuttonpress.mp3" : "morajaireset.mp3"));
+   audio.play();
+ }
+ 
  if (cornerTile == colorsNeeded[id] && id >= 0) {
    var colorNames = Object.keys(Tiles);
    onColors[id] = true;
@@ -730,19 +776,73 @@ function loadBox(input = document.getElementById("boxloadinput").value) {
   solved = false;
 }
 
-function loadSavedMenu() {
-   var menu = document.getElementById("savedmenu");
+function loadPresetsMenu() {
+   var menu = document.getElementById("presetsmenu");
    var children = menu.childNodes;
-   for (let i = 0; i < children.length; i++) {
-     console.log(children[i]);
-     if (children[i].id == "saveboxtemplate") {continue;}
+   removeCategoryChildren(children);
+   
+   var template = document.getElementById("saveboxtemplate");
+   var allPresets = {"The Mora Jai Box": "MTswOzE7MTswOzA7MDswOzEvMTsxOzE7MS9UaGUgTW9yYSBKYWkgQm94"};
+   var descriptions = {"The Mora Jai Box": "The classic variation, features only simple White and Gray tiles, nothing else."}
+
+   for (let i = 0; i < Object.keys(allPresets).length; i++) {
+     var clone = template.cloneNode(true);
+     menu.appendChild(clone);
+     clone.style.display = "block";
+     clone.id="savedboxcontainer" + i;
+     var subElements = clone.childNodes;
+     clone.querySelector('#saveboxfakename').innerHTML = Object.keys(allPresets)[i];
+     clone.querySelector('#saveboxfakecode').remove();
+     clone.querySelector('#saveboxdescription').style.display = "block";
+     clone.querySelector('#saveboxdescription').innerHTML = descriptions[Object.keys(allPresets)[i]];
+     clone.querySelector('#saveboxfakeplayrow #fakeplaybutton').setAttribute( "onClick", "saveBoxSelect('load', '" + allPresets[Object.keys(allPresets)[i]] + "')");
+     clone.querySelector('#saveboxfakeplayrow #fakedeletebutton').style.visibility = "hidden";
+     clone.style['background-color'] = "#78CC70";
+     try {
+     var boxData = getBoxDataFromCode(allPresets[Object.keys(allPresets)[i]]);
+     colorFakeBox(clone.querySelector('#saveboxfakebox'), boxData[0], boxData[1]);
+     } catch(error) {
+      console.log(error);
+      clone.remove()
+      continue;
+     }
+   }
+}
+
+function removeCategoryChildren(children) {
+  for (let i = 0; i < children.length; i++) {
+     if (children[i].id == "saveboxtemplate" || (children[i].id != "" && children[i].id != null && children[i].id.includes("savetext")) || children[i].id == "saverow" || children[i].id == "presettitle") {continue;}
      children[i].remove();
    } 
+}
+
+function loadSavedMenu(category = "created") {
+   var menu = document.getElementById("savedmenu");
+   var children = menu.childNodes;
+    removeCategoryChildren(children);
+     removeCategoryChildren(children);
 
    var template = document.getElementById("saveboxtemplate");
-   var allSavedBoxes = localStorage.getItem("savedBoxes");
+   var allSavedBoxes = {};
+
+   if (category == "created") {
+   allSavedBoxes = localStorage.getItem("savedBoxes");
    if (allSavedBoxes == null) { allSavedBoxes = {}; }
    else {allSavedBoxes = JSON.parse(localStorage.getItem("savedBoxes")); }
+   } else {
+     var allSolved = localStorage.getItem("completeBoxes");
+     if (allSolved == null) { allSolved = []; }
+      else {allSolved = JSON.parse(localStorage.getItem("completeBoxes")); }
+      for (let i = 0; i < allSolved.length; i++) {
+        try {
+        var boxName = atob(allSolved[i]).split("/")[2];
+        allSavedBoxes[boxName] = allSolved[i];
+        } catch(error) { continue; }
+      }
+    }
+  
+   document.getElementById("savetextcategory").innerHTML = (category == "created") ? "Created Boxes" : "Solved Boxes";
+   document.getElementById("savetextwarn").style.display = (Object.keys(allSavedBoxes).length <= 0) ? "block" : "none";
 
    for (let i = 0; i < Object.keys(allSavedBoxes).length; i++) {
      var clone = template.cloneNode(true);
@@ -753,7 +853,7 @@ function loadSavedMenu() {
      clone.querySelector('#saveboxfakename').innerHTML = Object.keys(allSavedBoxes)[i];
      clone.querySelector('#saveboxfakecode').value = allSavedBoxes[Object.keys(allSavedBoxes)[i]];
      clone.querySelector('#saveboxfakeplayrow #fakeplaybutton').setAttribute( "onClick", "saveBoxSelect('load', '" + allSavedBoxes[Object.keys(allSavedBoxes)[i]] + "')");
-     clone.querySelector('#saveboxfakeplayrow #fakedeletebutton').setAttribute( "onClick", "saveBoxSelect('delete', '" + Object.keys(allSavedBoxes)[i] + "')");
+     clone.querySelector('#saveboxfakeplayrow #fakedeletebutton').setAttribute( "onClick", "saveBoxSelect('delete', '" + ((category == "created") ? Object.keys(allSavedBoxes)[i] : allSavedBoxes[Object.keys(allSavedBoxes)[i]])  + "')");
      try {
      var boxData = getBoxDataFromCode(allSavedBoxes[Object.keys(allSavedBoxes)[i]]);
      colorFakeBox(clone.querySelector('#saveboxfakebox'), boxData[0], boxData[1]);
@@ -771,7 +871,6 @@ function saveBoxSelect(action, code) {
         loadBox(code);
         break;
      case "delete":
-        console.log(code);
         var name = code;
         
          var template = document.getElementById("saveboxtemplate");
@@ -779,19 +878,24 @@ function saveBoxSelect(action, code) {
          if (allSavedBoxes == null) { allSavedBoxes = {}; }
          else {allSavedBoxes = JSON.parse(localStorage.getItem("savedBoxes")); }
          
-         console.log(allSavedBoxes);
+         var category = "created";
+         if (Object.keys(allSavedBoxes).indexOf(name) >= 0) {
          delete allSavedBoxes[name]; 
          console.log(allSavedBoxes);
          localStorage.setItem("savedBoxes", JSON.stringify(allSavedBoxes));
+ 
+         } else {  
+           allSavedBoxes = JSON.parse(localStorage.getItem("completeBoxes"));
+           allSavedBoxes.splice(allSavedBoxes.indexOf(name), 1);
+           localStorage.setItem("completeBoxes", JSON.stringify(allSavedBoxes));
+           category = "solved";
+         }
 
          var menu = document.getElementById("savedmenu");
          var children = menu.childNodes;
-         for (let i = 0; i < children.length; i++) {
-            if (children[i].id == "saveboxtemplate") {continue;}
-           children[i].remove();
-          } 
+          removeCategoryChildren(children);
 
-         loadSavedMenu();
+         loadSavedMenu(category);
         break;
   }
 }
@@ -818,6 +922,7 @@ function showMenu(menu) {
   document.getElementById("box").style.visibility = (document.getElementById("presetsmenu").style.display == "none" && document.getElementById("savedmenu").style.display == "none") ? "visible" : "hidden";
   document.getElementById("boxname").style.display = (document.getElementById("presetsmenu").style.display == "none" && document.getElementById("savedmenu").style.display == "none") ? "block" : "none";
   if (menu == "saved") { loadSavedMenu(); }
+  else if (menu == "presets") { loadPresetsMenu(); }
 }
 
 function colorFakeBox(box, bGrid, colors) {
