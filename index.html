@@ -385,7 +385,7 @@ hr {
  <li>First, press the Blue Edit Button at the top of the screen to open the Edit Menu.</li>
  <li>Secondly, press the Edit Button to enter edit mode, where you can select tile colors and such.</li>
  <li>While in edit mode, pressing on a tile will change it to the selected colour, and pressing a corner tile will also change its color, pretty simple.</li>
- <li>After solving your box, you get the option to save it! (By clicking on the Floppy Disk/Save icon).</li>
+ <li>After solving your box, you get the option to save it! (By clicking on the Disk/Save icon).</li>
  <li>When saving your box and naming your box you get its <b>code</b>. You can copy this code and send it to other for them to try your awesome new box!</li>
  <li>All your saved boxes will be accessible in the [Saved] tab, where you can see their code, and play them if you want.</li>
 </ul>
@@ -393,7 +393,12 @@ hr {
 <br>
 <hr>
 <h1 style="font-size:64px;">Loading</h1>
-<p style="font-size:28px;color:white;text-align:left">Box codes, which are made from saving a box can be inputted to the [Load] menu, where you can play them! All solved boxes are also saved in the [Saved] tab, where you can check their codes and play them again.</p>
+<p style="font-size:28px;color:white;text-align:left">Box codes, which are made from saving a box can be inputted to the [Load] menu, where you can play them! All solved boxes are also saved in the [Saved] tab, where you can check their codes and play them again.</p><br>
+<div style="display:flex">
+<p style="font-size:28px;color:white;text-align:left">Box codes will look like this:</p>
+<input type="text" id ="saveboxfakecode" readonly style="position:relative;top:18px;left:15px;width:385px;height:45px;font-size:32px;background-color:#252525;color:#FFFFFF;text-align:left" value="MTs0OzM7MDsyOzA7Mzs0OzEvMDswOzA7MC9UaGUgR3JheSBCb3g="></input>
+</div>
+
 </div>
 
 <script>
@@ -433,7 +438,7 @@ function tilePress(y, x, tileColor = grid[y][x]) {
   if (solved) {return;}
   
    var audio = new Audio('https://github.com/eestsoftware/MoraJaiBox/raw/refs/heads/main/audio/morajaitilepress.mp3');
-   audio.play();
+   if (tileColor != 9) { audio.play(); }
  
   var selfColor = parseInt(grid[y][x]);//seperate from tileColor for blue tiles to work
   switch(tileColor) {
@@ -780,10 +785,13 @@ function loadPresetsMenu() {
    var menu = document.getElementById("presetsmenu");
    var children = menu.childNodes;
    removeCategoryChildren(children);
-   
+   menu.innerHTML = '<h1 id="presettitle" style="font-size:64px">Box Presets</h1>';   
+
    var template = document.getElementById("saveboxtemplate");
-   var allPresets = {"The Mora Jai Box": "MTswOzE7MTswOzA7MDswOzEvMTsxOzE7MS9UaGUgTW9yYSBKYWkgQm94"};
-   var descriptions = {"The Mora Jai Box": "The classic variation, features only simple White and Gray tiles, nothing else."}
+   var allPresets = {"The Mora Jai Box": "MTswOzE7MTswOzA7MDswOzEvMTsxOzE7MS9UaGUgTW9yYSBKYWkgQm94", "Advanced Mora Jai": "MDsxOzQ7MDsxOzE7MzsxOzUvMTsxOzE7MS9BZHZhbmNlZCBNb3JhIEphaQ==", "Blackout!": "MDs0OzM7MzswOzM7Mzs1OzAvMzszOzM7My9CbGFja291dCE=", "Upwarp": "NDsyOzA7MzswOzQ7MDs0OzQvNDs0OzQ7NC9VcHdhcnA=", "A More Nuanced Box": "MTsyOzM7MTs3OzA7Mjs1OzcvMjsyOzI7Mi9BIE1vcmUgTnVhbmNlZCBCb3g=", "Up North Trip": "NTswOzM7MDsyOzU7Mjs3OzUvNTs1OzU7NS9VcCBOb3J0aCBUcmlw", "Red Threat": "MzswOzU7MTs4OzE7MDs0OzUvODs4Ozg7OC9SZWQgVGhyZWF0", "The Rotunda": "NzswOzA7NjszOzY7MDswOzcvNjs2OzY7Ni9UaGUgUm90dW5kYQ==", "A New Hue": "MDswOzA7MDsyOzM7OTs1OzEvOTs5Ozk7OS9BIE5ldyBIdWU=", "Orange Mayhem": "Nzs5OzQ7MDszOzA7Mjs5OzcvNzs3Ozc7Ny9PcmFuZ2UgTWF5aGVt"};
+
+
+   var descriptions = {"The Mora Jai Box": "The classic variation, features only simple White and Gray tiles, nothing else.", "Advanced Mora Jai": "The Classic Box, but with a few twists! Includes 3 new tiles from 3 different regional variations.", "Blackout!": "A simpler box featuring the Black Tiles, without any White Tiles to be found!", "A More Nuanced Box": "Featuring the Green and Orange tiles! Quite a botanical looking box.", "Red Threat": "An introduction to the Red Tiles, find a way to spread them to the corners!", "The Rotunda": "Featuring the Pink tiles, which rotate everything around them clockwise. Twist and turn your way to the solution.", "Up North Trip": "A box focues on those Yellow tiles, you know them, they always move up!", "Upwarp": "Simple box featuring the Violet tiles, with a guest appearance from the Green tile.", "Orange Mayhem": "The most complicated box yet. This one will be sure to test your knowledge of the msot essential tiles.", "A New Hue": "A box featuring Blue?? Tiles!! Figure out their utility and spread them across the four corners."}
 
    for (let i = 0; i < Object.keys(allPresets).length; i++) {
      var clone = template.cloneNode(true);
