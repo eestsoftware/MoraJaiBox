@@ -113,7 +113,7 @@ hr {
 </div>
 
 
-<div id="savedmenu" style="overflow-x:hidden;display:none" class="center">
+<div id="savedmenu" style="overflow-x:hidden;display:none;width:100%" class="center">
 <h1 id="savetexttitle" style="font-size:64px">Saved Boxes</h1>
 
 <div id="saverow" style="display:flex;width:500px;height:95px;background-color:#21314E" class="center">
@@ -156,7 +156,7 @@ hr {
 
 
 <h1 id="saveboxfakename" style="font-size:100px;position:relative;left:570px;bottom:1075px;width:1720px;text-align:left">Untitled Box</h1>
-<p id="saveboxdescription" style="font-size:48px;position:relative;left:570px;bottom:1075px;max-width:32%;text-align:left;display:none">The classic variation</p>
+<p id="saveboxdescription" style="font-size:48px;position:relative;left:570px;bottom:1075px;max-width:45%;text-align:left;display:none">The classic variation</p>
 
 
 
@@ -172,7 +172,7 @@ hr {
 
 </div>
 
-<div id="presetsmenu" style="overflow-x:hidden;display:none" class="center">
+<div id="presetsmenu" style="overflow-x:hidden;display:none;width:100%" class="center">
 <h1 id="presettitle" style="font-size:64px">Box Presets</h1>
 
 
@@ -211,7 +211,7 @@ hr {
 <input type ="image"id="cornerbutton3" class="cornercircle white" onClick="cornerButton(3)" style="top:768px;right:3210px;transform: scale(0.9) rotate(-45deg)" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiblue_off.png"></input>
 </div>
 
-<h1 style="text-align:center;font-size:64px;left:0px;position:relative" id="boxname">Custom Box</h1>
+<h1 style="text-align:center;font-size:64px;left:0px;position:relative;width:100%" id="boxname">Custom Box</h1>
 
 <div id="editmenu" style="position:fixed;margin:auto;overflow-y:scroll;overflow-x:hidden;top:0;bottom:0;right:0%;height:100%;width:550px;background-color:#344D7E;display:none">
 <br><br><br><br><br><br><br>
@@ -821,7 +821,7 @@ function loadPresetsMenu() {
 function removeCategoryChildren(children) {
   for (let i = 0; i < children.length; i++) {
      if (children[i].id == "saveboxtemplate" || (children[i].id != "" && children[i].id != null && children[i].id.includes("savetext")) || children[i].id == "saverow" || children[i].id == "presettitle") {continue;}
-     children[i].remove();
+     children[i].outerHTML = "";
    } 
 }
 
