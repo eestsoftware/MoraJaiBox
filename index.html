@@ -84,8 +84,7 @@ hr {
 
 
 <body>
-<div id="menubar" style="width:120%;height:150px;background-color:#1B1D27;display:flex;overflow:hidden;text-align:center;position:fixed;z-index:5;top:0;left:0;right:0;bottom:0;margin-right:auto;margin-left:auto;justify-content:center">
-
+<div id="menubar" style="width:850px;height:150px;background-color:#1B1D27;display:flex;overflow:hidden;text-align:center;position:fixed;z-index:5;top:0;left:0;margin-right:auto;margin-left:auto;right:0;">
 <input type ="image" class="tilebutton white" style="display:inline-block;bottom:15px;transform: scale(0.75);color:#000000" onClick="showMenu('help')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaicornertile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:134px">Help</h1></input>
 
 <input type ="image" class="tilebutton blue" style="display:inline-block;bottom:15px;right:105px;transform: scale(0.75);color:#000000" onClick="showMenu('edit')"  src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitile.png"><h1 class="noHover" style="font-size:48px;color:#000000;position:relative;top:15px;right:239px">Edit</h1></input>
@@ -100,6 +99,7 @@ hr {
 
 
 </div>
+<div id="menubg" style="width:120%;height:150px;background-color:#1B1D27;display:flex;overflow:hidden;text-align:center;position:fixed;z-index:4;top:0;left:0;margin-right:auto;margin-left:auto;right:0;"></div>
 <br><br><br><br><br><br>
 
 
@@ -124,7 +124,7 @@ hr {
 <p id="savetextwarn" style="font-size:32px">You don't have any saved boxes</p>
 <br><br>
 
-<div id="saveboxtemplate" style="position:relative;height:550px;width:85%;background-color:#40558B;left:20px;margin-bottom:25px;overflow:hidden;display:none">
+<div id="saveboxtemplate" style="position:relative;height:550px;width:200%;max-width:155%;min-width:50px;background-color:#40558B;left:20px;margin-bottom:25px;overflow-y:hidden;display:none">
 <div id ="saveboxfakebox" style="position:relative;overflow-x:hidden;width:1024px;height:1024px;display:flex;right:205px;bottom:235px;transform: scale(0.5)" class="noHover">
 <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaibox.png"></img>
 
@@ -155,15 +155,15 @@ hr {
 </div>
 
 
-<h1 id="saveboxfakename" style="font-size:100px;position:relative;left:570px;bottom:1075px;max-width:1050px;text-align:left">Untitled Box</h1>
-<p id="saveboxdescription" style="font-size:48px;position:relative;left:570px;bottom:1075px;max-width:1050px;text-align:left;display:none">The classic variation</p>
+<h1 id="saveboxfakename" style="font-size:100px;position:relative;left:570px;bottom:1075px;width:1720px;text-align:left">Untitled Box</h1>
+<p id="saveboxdescription" style="font-size:48px;position:relative;left:570px;bottom:1075px;max-width:32%;text-align:left;display:none">The classic variation</p>
 
 
 
 <input type="text" id ="saveboxfakecode" readonly style="position:absolute;left:600px;top:250px;width:850px;height:45px;font-size:32px;background-color:#252525;color:#FFFFFF;text-align:left" value="CodeCodeCodeCodeCode"></input>
 
 
-<div id="saveboxfakeplayrow" style="display:flex;position:absolute;left:80%;bottom:0px">
+<div id="saveboxfakeplayrow" style="display:flex;position:absolute;left:560px;bottom:0px">
 <input type="image" id="fakedeletebutton" style="height:98px;width:98px;background-color:#68352D;margin:5px;border:3px solid #121212" onClick="saveBoxSelect('delete')" class="blankColor" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaitrash.png"></input>
 <input type="image" id="fakeplaybutton" style="height:98px;width:98px;background-color:#21314E;margin:5px;border:3px solid #121212" onClick="saveBoxSelect('load')" class="blankColor" src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiplay.png"></input>
 </div>
@@ -791,7 +791,7 @@ function loadPresetsMenu() {
    var allPresets = {"The Mora Jai Box": "MTswOzE7MTswOzA7MDswOzEvMTsxOzE7MS9UaGUgTW9yYSBKYWkgQm94", "Advanced Mora Jai": "MDsxOzQ7MDsxOzE7MzsxOzUvMTsxOzE7MS9BZHZhbmNlZCBNb3JhIEphaQ==", "Blackout!": "MDs0OzM7MzswOzM7Mzs1OzAvMzszOzM7My9CbGFja291dCE=", "Upwarp": "NDsyOzA7MzswOzQ7MDs0OzQvNDs0OzQ7NC9VcHdhcnA=", "A More Nuanced Box": "MTsyOzM7MTs3OzA7Mjs1OzcvMjsyOzI7Mi9BIE1vcmUgTnVhbmNlZCBCb3g=", "Up North Trip": "NTswOzM7MDsyOzU7Mjs3OzUvNTs1OzU7NS9VcCBOb3J0aCBUcmlw", "Red Threat": "MzswOzU7MTs4OzE7MDs0OzUvODs4Ozg7OC9SZWQgVGhyZWF0", "The Rotunda": "NzswOzA7NjszOzY7MDswOzcvNjs2OzY7Ni9UaGUgUm90dW5kYQ==", "A New Hue": "MDswOzA7MDsyOzM7OTs1OzEvOTs5Ozk7OS9BIE5ldyBIdWU=", "Orange Mayhem": "Nzs5OzQ7MDszOzA7Mjs5OzcvNzs3Ozc7Ny9PcmFuZ2UgTWF5aGVt"};
 
 
-   var descriptions = {"The Mora Jai Box": "The classic variation, features only simple White and Gray tiles, nothing else.", "Advanced Mora Jai": "The Classic Box, but with a few twists! Includes 3 new tiles from 3 different regional variations.", "Blackout!": "A simpler box featuring the Black Tiles, without any White Tiles to be found!", "A More Nuanced Box": "Featuring the Green and Orange tiles! Quite a botanical looking box.", "Red Threat": "An introduction to the Red Tiles, find a way to spread them to the corners!", "The Rotunda": "Featuring the Pink tiles, which rotate everything around them clockwise. Twist and turn your way to the solution.", "Up North Trip": "A box focues on those Yellow tiles, you know them, they always move up!", "Upwarp": "Simple box featuring the Violet tiles, with a guest appearance from the Green tile.", "Orange Mayhem": "The most complicated box yet. This one will be sure to test your knowledge of the msot essential tiles.", "A New Hue": "A box featuring Blue?? Tiles!! Figure out their utility and spread them across the four corners."}
+   var descriptions = {"The Mora Jai Box": "The classic variation, features only simple White and Gray tiles, nothing else.", "Advanced Mora Jai": "The Classic Box, but with a few twists! Includes 3 new tiles from 3 different regional variations.", "Blackout!": "A simpler box featuring the Black Tiles, without any White Tiles to be found!", "A More Nuanced Box": "Featuring the Green and Orange tiles! Quite a botanical looking box.", "Red Threat": "An introduction to the Red Tiles, find a way to spread them to the corners!", "The Rotunda": "Featuring the Pink tiles, which rotate everything around them clockwise. Twist and turn your way to the solution.", "Up North Trip": "A box focues on those Yellow tiles, you know them, they always move up!", "Upwarp": "Simple box featuring the Violet tiles, with a guest appearance from the Green tile.", "Orange Mayhem": "The most complicated box yet. This one will be sure to test your knowledge of the most essential tiles.", "A New Hue": "A box featuring Blue?? Tiles!! Figure out their utility and spread them across the four corners."}
 
    for (let i = 0; i < Object.keys(allPresets).length; i++) {
      var clone = template.cloneNode(true);
@@ -805,6 +805,7 @@ function loadPresetsMenu() {
      clone.querySelector('#saveboxdescription').innerHTML = descriptions[Object.keys(allPresets)[i]];
      clone.querySelector('#saveboxfakeplayrow #fakeplaybutton').setAttribute( "onClick", "saveBoxSelect('load', '" + allPresets[Object.keys(allPresets)[i]] + "')");
      clone.querySelector('#saveboxfakeplayrow #fakedeletebutton').style.visibility = "hidden";
+     clone.querySelector('#saveboxfakeplayrow').style.left = "500px";
      clone.style['background-color'] = "#78CC70";
      try {
      var boxData = getBoxDataFromCode(allPresets[Object.keys(allPresets)[i]]);
@@ -962,8 +963,8 @@ function colorFakeBox(box, bGrid, colors) {
 }
 </script>
 
-<br><p style="position:fixed;bottom:-1%;background-color: #272727;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"> <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiboxico.png" height="16px"width="16px;"></img>
- eestsoftware 2025 ; mora jai box editor ; the mora jai boxes are from Blue Prince by Dogubomb, I am not affiliated with Dogubomb nor Raw Fury. This is simply a fan-made site. Eestsoftware is made and managed by Silenceman, I have some other games on itch and stuff like that. Eestsoftware also has more sites than this you know.. But I'm impressed with your "reading this thin line of text skill though." Have a free puzzle: [MDs4OzA7MzswOzU7OTsyOzEvOTs5Ozk7OS8oYm9udXMpIEZvdXIgQ29ybmVycw==] </p>
+<br><p style="position:fixed;bottom:-1%;background-color: #272727;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"> <img src="https://raw.githubusercontent.com/eestsoftware/MoraJaiBox/refs/heads/main/images/morajaiboxico.png" height="16px"width="16px;"></img> eestsoftware 2025 ; mora jai box editor ; the mora jai boxes are from Blue Prince by Dogubomb, I am not affiliated with Dogubomb nor Raw Fury. This is simply a fan-made site. Eestsoftware is made and managed by Silenceman, I have some other games on itch and stuff like that. Eestsoftware also has more sites than this you know.. But I'm impressed with your "reading this thin line of text skill though." Have a free puzzle: [MDs4OzA7MzswOzU7OTsyOzEvOTs5Ozk7OS8oYm9udXMpIEZvdXIgQ29ybmVycw==] </p>
+
 
 </body>
 </html>
